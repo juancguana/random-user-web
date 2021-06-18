@@ -5,18 +5,23 @@ import PropTypes from 'prop-types'
 class ItemUser extends React.Component {
   state = {};
   render() {
-    const { name, coutry, email } = this.props.user;
+    const { name, country, email, telefono } = this.props.user;
     return (
       <div className='details'>
         <p>
           <strong>Nombre: </strong> {name}
         </p>
         <p>
-          <strong>Pais: </strong> {coutry}
+          <strong>Pais: </strong> {country}
         </p>
         <p>
           <strong>Correo: </strong> {email}
         </p>
+        { telefono &&
+        <p>
+          <strong>Telefono: </strong> {telefono}
+        </p>
+        }
       </div>
     );
   }
@@ -25,7 +30,7 @@ class ItemUser extends React.Component {
 ItemUser.propTypes = {
   user: PropTypes.shape({
     name: PropTypes.string,
-    coutry: PropTypes.string,
+    country: PropTypes.string,
     email: PropTypes.string
   })
 }
@@ -33,7 +38,7 @@ ItemUser.propTypes = {
 ItemUser.defaultProps = {
   user: {
     name: 'Mi nombre por defecto',
-    coutry: 'Mi pais por defecto',
+    country: 'Mi pais por defecto',
     email: 'Mi email por defecto'
   }
 }

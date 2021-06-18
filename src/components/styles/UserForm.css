@@ -1,0 +1,15 @@
+.title-form {
+  margin: 60px 16px 16px;
+  text-align: center;
+}
+
+.form {
+  margin: 8px auto;
+  max-width: 30%;
+  padding: 12px;
+}
+
+.input-form {
+  display: flex;
+  flex-direction: column;
+}

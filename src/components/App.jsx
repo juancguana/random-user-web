@@ -9,7 +9,10 @@ export class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      users: userList
+      name: '',
+      country: '',
+      email: '',
+      telefono: ''
     }
   }
 
@@ -25,14 +28,7 @@ export class App extends Component {
 
     return (
       <>
-      {/* <Title text="Lista de usuarios"/>
-      {
-        this.state.users.map((item, index)=>{
-          return (
-            <ItemUser key={index} user={item} /> 
-          )
-        })
-      } */}
+      <ItemUser user={this.state} />
       <UserForm onChange={this.handleChange} user={this.state}/>
       {/* <Box align="center">
         <Button color="secondary" variant="contained" size="large">Cargar mas</Button>

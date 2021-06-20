@@ -3,7 +3,8 @@ import Title from './Title'
 import ItemUser from './ItemUser'
 import UserForm from './UserForm';
 import userList from '../data'
-import { Box, Button, ButtonGroup, Switch } from '@material-ui/core';
+import { Box, Button, ButtonGroup, Switch, ThemeProvider } from '@material-ui/core';
+import theme from '../themeConfig'
 
 export class App extends Component {
   constructor(props) {
@@ -27,14 +28,14 @@ export class App extends Component {
     console.log(this.state);
 
     return (
-      <>
-      <ItemUser user={this.state} />
-      <UserForm onChange={this.handleChange} user={this.state}/>
-      {/* <Box align="center">
-        <Button color="secondary" variant="contained" size="large">Cargar mas</Button>
-      </Box> */}
+      <ThemeProvider theme={theme}>
+        <ItemUser user={this.state} />
+        <UserForm onChange={this.handleChange} user={this.state}/>
+        {/* <Box align="center">
+          <Button color="secondary" variant="contained" size="large">Cargar mas</Button>
+        </Box> */}
 
-    </>
+    </ThemeProvider>
     )
   }
 }

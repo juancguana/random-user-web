@@ -26,7 +26,6 @@ export class UserForm extends Component {
     const { name, country, email } = this.props.user;
     return (
       <div>
-        <h2 className='title-form'>Nuevo Usuario</h2>
         <form className='form' onSubmit={this.handleSubmit}>
           <FormControl fullWidth>
             <InputLabel>Nombre: </InputLabel>
@@ -64,24 +63,6 @@ export class UserForm extends Component {
             />
             <FormHelperText>Aqui debes ingresar un email</FormHelperText>
           </FormControl>
-          <br />
-          <Box align='center'>{this.state.loading && <CircularProgress />}</Box>
-          <Box align='center'>
-            <Button
-              color="primary"
-              variant='contained'
-              onClick={() => this.setState({ loading: !this.state.loading })}
-            >
-              Agregar
-            </Button>
-            <Button
-              color="secondary"
-              variant='contained'
-              onClick={() => this.setState({ loading: !this.state.loading })}
-            >
-              Agregar
-            </Button>
-          </Box>
         </form>
       </div>
     );

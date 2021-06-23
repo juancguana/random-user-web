@@ -7,7 +7,7 @@ import { Box, Button, ButtonGroup, Switch, ThemeProvider } from '@material-ui/co
 import theme from '../themeConfig'
 import Header from './Header'
 import Footer from './Footer';
-
+import Home from '../pages/Home'
 export class App extends Component {
   constructor(props) {
     super(props)
@@ -31,13 +31,8 @@ export class App extends Component {
 
     return (
       <ThemeProvider theme={theme}>
-        <Header />
-        <ItemUser user={this.state} />
-        <UserForm onChange={this.handleChange} user={this.state}/>
-        {/* <Box align="center">
-          <Button color="secondary" variant="contained" size="large">Cargar mas</Button>
-        </Box> */}
-        <Footer />
+        <Home />
+       
 
     </ThemeProvider>
     )
@@ -45,3 +40,9 @@ export class App extends Component {
 }
 
 export default App
+
+ {/* <ItemUser user={this.state} />
+        <UserForm onChange={this.handleChange} user={this.state}/> */}
+        {/* <Box align="center">
+          <Button color="secondary" variant="contained" size="large">Cargar mas</Button>
+        </Box> */}

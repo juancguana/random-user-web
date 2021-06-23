@@ -9,12 +9,10 @@ import {
 
 const useStyles = makeStyles((theme) => ({
   footer: {
-    position: 'fixed',
     width: '100%',
     padding: '24px 0',
     background: theme.palette.primary.main,
     color: 'white',
-    bottom: 0,
   },
 }));
 

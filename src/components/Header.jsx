@@ -7,6 +7,7 @@ import {
   Link,
   makeStyles,
 } from '@material-ui/core';
+import { Link as RouterLink} from 'react-router-dom'
 
 const useStyle = makeStyles({
   menu: {
@@ -25,13 +26,15 @@ const Header = () => {
           <IconButton edge='start'>
             <img src='logo512.png' alt='Logo' height='30px' />
           </IconButton>
-          <Link href='' color='inherit'>
+          <Link component={RouterLink} to="/" color='inherit'>
             Inicio
           </Link>
-          <Link href='' color='inherit'>
+
+          <Link component={RouterLink} to="/form" color='inherit'>
             Formulario
           </Link>
-          <Link href='' color='inherit'>
+
+          <Link component={RouterLink} to="/list" color='inherit'>
             Lista
           </Link>
         </Toolbar>

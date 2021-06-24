@@ -6,12 +6,14 @@ import theme from '../themeConfig';
 import Home from '../pages/Home';
 import Form from '../pages/Form';
 import List from '../pages/List';
-
+import Layout from '../layout/Layout';
 export class App extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
-        <List />
+        <Layout>
+          <List />
+        </Layout>
       </ThemeProvider>
     );
   }

@@ -3,11 +3,6 @@ import {
   InputLabel,
   Input,
   FormHelperText,
-  FilledInput,
-  OutlinedInput,
-  Button,
-  Box,
-  CircularProgress,
 } from '@material-ui/core';
 import React, { Component } from 'react';
 import './styles/UserForm.css';

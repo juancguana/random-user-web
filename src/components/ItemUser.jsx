@@ -1,5 +1,4 @@
 import React from 'react';
-import './styles/ItemUser.css';
 import PropTypes from 'prop-types'
 import { Card, CardContent, CardMedia, Typography, makeStyles } from '@material-ui/core'
 

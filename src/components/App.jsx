@@ -8,6 +8,7 @@ import Form from '../pages/Form';
 import List from '../pages/List';
 import Layout from '../layout/Layout';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import User from '../pages/User';
 export class App extends Component {
   render() {
     return (
@@ -18,6 +19,7 @@ export class App extends Component {
               <Route exact path="/" component={Home} />
               <Route exact path="/list" component={List} />
               <Route exact path="/form" component={Form} />
+              <Route exact path="/user/:id" component={User} />
             </Switch>
           </Layout>
         </ThemeProvider>

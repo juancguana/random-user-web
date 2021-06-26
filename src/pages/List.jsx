@@ -9,9 +9,10 @@ const List = () => {
 
   const getData = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/data");
-      const { users } = response.data
-      setUsers(users);
+      const response = await axios.get("http://localhost:3000/users");
+      console.log(response);
+      const { data } = response
+      setUsers(data);
     } catch (error) {
       console.log(error);
     }

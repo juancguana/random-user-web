@@ -1,10 +1,25 @@
-import React, { useState } from 'react';
-import userList from '../data';
+import React, { useState, useEffect } from 'react';
+// import userList from '../data';
 import Title from '../components/Title';
 import ItemUser from '../components/ItemUser';
+import axios from 'axios';
 
 const List = () => {
-  const [users, setUsers] = useState(userList);
+  const [users, setUsers] = useState([]);
+
+  const getData = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/data");
+      const { users } = response.data
+      setUsers(users);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(()=>{
+    getData()
+  },[])
 
   return (
     <>

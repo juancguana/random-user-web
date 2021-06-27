@@ -4,27 +4,36 @@ import {
   Input,
   FormHelperText,
   Box,
-  Button
+  Button,
 } from '@material-ui/core';
 import React from 'react';
-import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
 import './styles/UserForm.css';
 import axios from 'axios';
 
 const UserForm = (props) => {
-  const { name, country, email } = props.user;
-  const history = useHistory()
+  const { name, country, email, id } = props.user;
+  const history = useHistory();
 
-  const handleSubmit = async(e) =>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(props.user);
     try {
-      await axios.post("http://localhost:3000/users",props.user);
-      history.push('/list')
+      await axios.post('http://localhost:3000/users', props.user);
+      history.push('/list');
     } catch (error) {
       console.log(error);
     }
-  }
+  };
+
+  const handleEdit = async() => {
+    console.log('Edit');
+    try {
+      await axios.put(`http://localhost:3000/users/${id}`, props.user);
+      history.push('/list');
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
@@ -63,8 +72,16 @@ const UserForm = (props) => {
           />
           <FormHelperText>Aqui debes ingresar un email</FormHelperText>
         </FormControl>
-        <Box align="center">
-          <Button type="submit" color="primary" variant="contained">Crear</Button>
+        <Box align='center'>
+          {props.isEdit ? (
+            <Button color='primary' variant='contained' onClick={handleEdit}>
+              Guardar
+            </Button>
+          ) : (
+            <Button type='submit' color='primary' variant='contained'>
+              Crear
+            </Button>
+          )}
         </Box>
       </form>
     </div>

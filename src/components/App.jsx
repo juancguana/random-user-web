@@ -7,6 +7,7 @@ import List from '../pages/List';
 import Layout from '../layout/Layout';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import User from '../pages/User';
+import Edit from '../pages/Edit';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
             <Route exact path='/list' component={List} />
             <Route exact path='/form' component={Form} />
             <Route exact path='/user/:id' component={User} />
+            <Route exact path='/edit/:id' component={Edit} />
           </Switch>
         </Layout>
       </ThemeProvider>

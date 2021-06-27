@@ -9,7 +9,8 @@ import {
   Box,
   Button,
 } from '@material-ui/core';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const useStyle = makeStyles((theme) => ({
   cardUser: {
@@ -25,11 +26,25 @@ const useStyle = makeStyles((theme) => ({
   cardContent: {
     flex: 2,
   },
+  actions: {
+    display: 'flex',
+    justifyContent: 'space-around',
+  },
 }));
 
 const ItemUser = (props) => {
   const { name, country, email, telefono, id } = props.user;
   const classes = useStyle();
+
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`http://localhost:3000/users/${id}`);
+      window.location.reload()
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <Card className={classes.cardUser}>
       <CardMedia
@@ -54,11 +69,27 @@ const ItemUser = (props) => {
           </Typography>
         )}
         <br />
-        {props.isEdit && (
-          <Box>
-            <Button component={Link} to={`/edit/${id}`} variant="contained" color="secondary" >Editar</Button>
-          </Box>
-        )}
+        <Box className={classes.actions}>
+          {props.isEdit && (
+            <Button
+              component={Link}
+              to={`/edit/${id}`}
+              variant='contained'
+              color='secondary'
+            >
+              Editar
+            </Button>
+          )}
+          {props.isDelete && (
+            <Button
+              variant='contained'
+              color='secondary'
+              onClick={handleDelete}
+            >
+              Eliminar
+            </Button>
+          )}
+        </Box>
       </CardContent>
     </Card>
   );

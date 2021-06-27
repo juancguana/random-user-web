@@ -26,7 +26,7 @@ const List = () => {
     <>
       <Title text='Lista de usuarios' />
       {users.map((item, index) => (
-        <ItemUser key={index} user={item} isEdit/>
+        <ItemUser key={index} user={item} isEdit isDelete/>
       ))}
     </>
   );

@@ -8,13 +8,6 @@
       "telefono": ""
     },
     {
-      "id": "2",
-      "name": "Carlos Rojas",
-      "country": "Mexico",
-      "email": "carlos@prueba.com",
-      "telefono": ""
-    },
-    {
       "id": "3",
       "name": "Emilio Vargas",
       "country": "Colombia",
@@ -41,20 +34,6 @@
       "email": "raul@prueba.com",
       "telefono": "",
       "id": "xNZ8RfB"
-    },
-    {
-      "name": "Manuel",
-      "country": "España ",
-      "email": "manuel@prueba.com",
-      "telefono": "",
-      "id": "MEZLnjc"
-    },
-    {
-      "name": "Matias",
-      "country": "Loza",
-      "email": "mati@prueba.com",
-      "telefono": "",
-      "id": "wx4KNa9"
     }
   ]
 }

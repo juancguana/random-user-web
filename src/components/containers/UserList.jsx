@@ -6,17 +6,17 @@ const UserList = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [page, setPage] = useState(0);
 
   useEffect(() => {
     const getData = async () => {
       try {
         setLoading(true);
         const response = await axios.get(
-          'https://randomuser.me/api/?results=10'
+          `https://randomuser.me/api/?page=${page}&results=10`
         );
         const { results } = response.data;
-        setUsers(results);
-        console.log(response);
+        setUsers([...users,...results]);
       } catch (error) {
         setLoading(true);
         setError(error.message);
@@ -24,9 +24,20 @@ const UserList = () => {
       setLoading(false);
     };
     getData();
-  }, []);
+  }, [page]);
 
-  return <UserListView users={users} loading={loading} error={error} />;
+  const handleLoad = () => {
+    setPage(page + 1);
+  };
+
+  return (
+    <UserListView
+      users={users}
+      loading={loading}
+      error={error}
+      onLoad={handleLoad}
+    />
+  );
 };
 
 export default UserList;

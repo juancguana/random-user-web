@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box, Typography, makeStyles } from '@material-ui/core'
-import UserList from '../components/UserList'
+import UserList from '../components/containers/UserList'
 import Title from '../components/Title'
 
 const useStyles = makeStyles({

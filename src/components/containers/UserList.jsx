@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Box, CircularProgress, Typography } from '@material-ui/core';
-import SingleUser from './SingleUser';
+import UserListView from '../view/UserList';
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
@@ -27,22 +26,7 @@ const UserList = () => {
     getData();
   }, []);
 
-  return (
-    <>
-      {loading ? (
-        <Box align='center' height="100vh">
-          <CircularProgress color='secondary' />
-        </Box>
-      ) : (
-        <Box height="100%">
-          {users.map((item, index) => (
-            <SingleUser key={index} {...item} />
-          ))}
-        </Box>
-      )}
-      {error && <Typography align="center">{error}</Typography> }
-    </>
-  );
+  return <UserListView users={users} loading={loading} error={error} />;
 };
 
 export default UserList;

@@ -7,8 +7,10 @@ const UserList = ({ onLoad, users, loading, error, onFilter }) => {
   return (
     <>
     <TextField label="Buscar"onChange={onFilter}/>
-      {loading ? (
-        <Box align='center' height='100vh'></Box>
+      {users.length == 0 ? (
+        <Box align='center' height='100vh'>
+          <Typography variant="h3">No se encotraron usuarios</Typography>
+        </Box>
       ) : (
         <Box height='100%'>
           {users.map((item, index) => (

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Card,
@@ -8,6 +8,8 @@ import {
   makeStyles,
   Box,
   Button,
+  Modal,
+  Paper,
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -30,19 +32,43 @@ const useStyle = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-around',
   },
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  confirm: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    height: '20%',
+    width: '30%',
+  },
+  modalActions: {
+    display: 'flex',
+    justifyContent: 'space-around',
+    width: '70%'
+  }
 }));
 
 const ItemUser = (props) => {
   const { name, country, email, telefono, id } = props.user;
+  const [open, setOpen] = useState(false);
   const classes = useStyle();
 
   const handleDelete = async () => {
     try {
       await axios.delete(`http://localhost:3000/users/${id}`);
-      window.location.reload()
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
+    setOpen(false);
+  };
+
+  const handleModal = () => {
+    setOpen(true);
   };
 
   return (
@@ -81,16 +107,29 @@ const ItemUser = (props) => {
             </Button>
           )}
           {props.isDelete && (
-            <Button
-              variant='contained'
-              color='secondary'
-              onClick={handleDelete}
-            >
+            <Button variant='contained' color='secondary' onClick={handleModal}>
               Eliminar
             </Button>
           )}
         </Box>
       </CardContent>
+      <Modal className={classes.modal} open={open}>
+        <Paper className={classes.confirm}>
+          <Typography>Esta seguro de eliminar este usuario?</Typography>
+          <Box className={classes.modalActions}>
+            <Button variant='contained' color='primary' onClick={handleDelete}>
+              Aceptar
+            </Button>
+            <Button
+              variant='contained'
+              color='primary'
+              onClick={() => setOpen(false)}
+            >
+              Cancelar
+            </Button>
+          </Box>
+        </Paper>
+      </Modal>
     </Card>
   );
 };

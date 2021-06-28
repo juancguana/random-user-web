@@ -1,13 +1,6 @@
 {
   "users": [
     {
-      "id": "1",
-      "name": "Carlos Guana",
-      "country": "Ecuador",
-      "email": "carlos@prueba.com",
-      "telefono": ""
-    },
-    {
       "id": "3",
       "name": "Emilio Vargas",
       "country": "Colombia",

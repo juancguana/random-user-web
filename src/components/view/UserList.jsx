@@ -1,11 +1,12 @@
 import React from 'react';
-import { Box, CircularProgress, Typography, Button } from '@material-ui/core';
+import { Box, CircularProgress, Typography, Button, TextField } from '@material-ui/core';
 import SingleUser from '../SingleUser';
 import Modal from '../Modal';
 
-const UserList = ({ onLoad, users, loading, error }) => {
+const UserList = ({ onLoad, users, loading, error, onFilter }) => {
   return (
     <>
+    <TextField label="Buscar"onChange={onFilter}/>
       {loading ? (
         <Box align='center' height='100vh'></Box>
       ) : (

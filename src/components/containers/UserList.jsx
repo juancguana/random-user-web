@@ -7,6 +7,7 @@ const UserList = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [page, setPage] = useState(0);
+  const [filterUser, setFilterUser] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
@@ -16,7 +17,8 @@ const UserList = () => {
           `https://randomuser.me/api/?page=${page}&results=10`
         );
         const { results } = response.data;
-        setUsers([...users,...results]);
+        setUsers([...users, ...results]);
+        setFilterUser([...users, ...results])
       } catch (error) {
         setLoading(true);
         setError(error.message);
@@ -30,12 +32,23 @@ const UserList = () => {
     setPage(page + 1);
   };
 
+  const handleFilter = (e) => {
+    const filtered = users.filter((user) => {
+      return (
+        user.name.first.toLowerCase().includes(e.target.value) ||
+        user.name.last.toLowerCase().includes(e.target.value)
+      );
+    });
+    setFilterUser(filtered);
+  };
+
   return (
     <UserListView
-      users={users}
+      users={filterUser}
       loading={loading}
       error={error}
       onLoad={handleLoad}
+      onFilter={handleFilter}
     />
   );
 };
